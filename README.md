@@ -5,7 +5,8 @@ Personal Project
 
 - Name: Pixel Genetic Algorithm
 - Year: 2018
-- Description: Using the MNIST database to train a Neural Network in order to detect digits drawn directly in a tkinter canvas and making a live prediction.
+- Description: Genetic algorithm where each pixel color([R, G, B]) represents a chromossome in the population and the goal is to reach a target color.
+To evolve to the next generation, the user has tu click with his mouse, the number of pixels/individuals in the population can be changed and the target color changes randomly after the best chromossome in the population reaches the target chromossome (see pictures below).
 
 ![alt text](https://github.com/filipenovais/PixelGeneticAlgorithm/blob/master/pixelGAinit.png)
 
