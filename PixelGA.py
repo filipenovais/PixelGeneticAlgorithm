@@ -14,7 +14,6 @@ def print_pop(population):
     for i in population:
         print(i)
 
-
 def create_starting_population(popsize):
     population = []
     for index in range(popsize):
@@ -39,7 +38,6 @@ def fitness(chromosome, targetchromosome):
 
     return fitness
 
-
 def get_partner_index(population, auxpopulation, targetchromosome):
     auxbest, auxbestfitness = best_fitness_pop(auxpopulation, targetchromosome)
     while True:
@@ -51,7 +49,6 @@ def get_partner_index(population, auxpopulation, targetchromosome):
             del auxpopulation[indexpop]
 
             return indexpartner, auxpopulation
-
 
 def crossover(a, b):
     new_1 = []
@@ -125,6 +122,7 @@ def mouseclick(event, mypixel):
         print("Generation # " + str(gennumber))
         print("Best Fitness Value --> " + str(bestfitness))
         print("Best Chromosome    --> " + str(best))
+        print("Target Chromosome  --> " + str(targetchromosome))
 
     auxpopulation = copy.deepcopy(population)
     for j in range(numberofcouples):
@@ -168,7 +166,7 @@ def main():
     mutationrate = 0.5
 
     #SIZE
-    sizenumber = 10
+    sizenumber = 30
     populationsize = sizenumber * sizenumber
     numberofcouples = int(populationsize*selectionsizerate/2)
 
@@ -186,7 +184,7 @@ def main():
     root = Tk()
     global canvas
     canvas = Canvas(root, width=400, height=400)
-
+    root.title('PixelGA')
     mypixel = []
     counter = 0
     for cl in range(sizenumber):
@@ -199,31 +197,5 @@ def main():
     canvas.pack()
     root.mainloop()
 
-
-    '''for i in range(numberofgen):
-        newpopulation = []
-        best, bestfitness = best_fitness_pop(population, targetchromosome)
-
-        if bestfitness > lastbestfitness:
-            print()
-            print("Generation # " + str(i))
-            print("Best Fitness Value --> " + str(bestfitness))
-            print("Best Chromosome    --> " + str(best))
-            if bestfitness == 765:
-                return 0
-
-        auxpopulation = copy.deepcopy(population)
-        for j in range(numberofcouples):
-            partnerindex1 , auxpopulation = get_partner_index(population, auxpopulation, targetchromosome)
-            partnerindex2 , auxpopulation = get_partner_index(population, auxpopulation, targetchromosome)
-            new_1, new_2 = crossover(population[partnerindex1], population[partnerindex2])
-            newpopulation.append(new_1)
-            newpopulation.append(new_2)
-
-        newpopulation = get_best_chromosomes(population, newpopulation, populationsize-numberofcouples*2, targetchromosome)
-
-        population = mutate(newpopulation, mutationrate)
-
-        lastbestfitness = bestfitness'''
 
 main()
